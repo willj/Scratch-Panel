@@ -9,7 +9,7 @@ Sample: http://www.madebywill.net/Scratch-Panel/sample/
 var sp = ScratchPanel({
   elementId: "scratch-container",     // The ID of a div or other element to create the scratch panel in
   foreground: "fg.png",               // An image for the scratchable surface
-  background: "bg.png"                // An image to show behind
+  background: "bg.png"                // An image to show behind - this is optional
 });
 ```
 
