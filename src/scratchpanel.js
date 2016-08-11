@@ -4,7 +4,7 @@ function ScratchPanel(options){
     options = options || {};
 
     var defaults = {
-        elementName: "scratch-panel",
+        elementId: "scratch-panel",
         threshold: 65,
         callback: null,
         readyCallback: null,
@@ -33,7 +33,7 @@ function ScratchPanel(options){
     }
 
     function setupCanvas(){
-        container = document.getElementById(options.elementName);
+        container = document.getElementById(options.elementId);
         canvas = document.createElement("canvas");
         ctx = canvas.getContext("2d");
 

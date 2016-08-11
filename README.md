@@ -7,7 +7,7 @@ Sample: http://www.madebywill.net/Scratch-Panel/sample/
 
 ```
 var sp = ScratchPanel({
-  elementName: "scratch-container",   // A div or other element to create the scratch panel in
+  elementId: "scratch-container",     // The ID of a div or other element to create the scratch panel in
   foreground: "fg.png",               // An image for the scratchable surface
   background: "bg.png"                // An image to show behind
 });
@@ -15,9 +15,10 @@ var sp = ScratchPanel({
 
 ## All options
 
-### elementName (default: "scratch-panel")
+### elementId (default: "scratch-panel")
 
-The HTML element you want to place the scratch panel in. The panel will fill this element, add a `<div id="scratch-panel"></div>` to your page if you don't want to set this.
+The HTML element ID you want to place the scratch panel in. The panel will fill this element (both width and height should be set on it).
+By default it will look for an element with id **scratch-panel** `<div id="scratch-panel"></div>`.
 
 ### threshold (default: 65)
 
@@ -37,7 +38,7 @@ The url to an image to use as the scratch surface.
 
 ### background (default: "")
 
-The url to an image to show behind the scratch panel. This is applied as a CSS background to the container you specify with **elementName**.
+The url to an image to show behind the scratch panel. This is applied as a CSS background to the container you specify with **elementId**.
 
 ### crossOrigin (default: "")
 Allowed values: `""`, `"anonymous"`, `"use-credentials"`
@@ -70,7 +71,7 @@ Clears the foreground image (as if the whole panel had been scratched).
 
 ### setOption(key, value)
 
-Set an option value. This will not have any (useful) effect on options used in the initialisation, such as foreground, background or elementName, but will change the value that's returned by **getOption()**
+Set an option value. This will not have any (useful) effect on options used in the initialisation, such as foreground, background or elementId, but will change the value that's returned by **getOption()**
 
 It can be used to change the following options:
 - threshold
@@ -84,7 +85,7 @@ Returns an option value.
 
 ```
 var sp = ScratchPanel({
-  elementName: "scratch-container", 
+  elementId: "scratch-container", 
   foreground: "fg.png",              
   background: "bg.png",
   enabled: false          // disabled by default
@@ -93,5 +94,5 @@ var sp = ScratchPanel({
 sp.setOption("enabled", true);  // enabled at a later time
 var p = sp.getPercentScratched();
 sp.clear();
-sp.getOption("elementName");
+sp.getOption("elementId");
 ```
