@@ -1,60 +1,15 @@
-<h1 id="scratch-panel">Scratch-Panel</h1>
-<p>A canvas based scratch panel/scratch card.</p>
-<p>Sample: <a href="http://www.madebywill.net/Scratch-Panel/sample/">http://www.madebywill.net/Scratch-Panel/sample/</a></p>
-<h2 id="minimal-usage">Minimal Usage</h2>
-<pre><code>var sp = ScratchPanel({
-  elementId: &quot;scratch-container&quot;,     // The ID of a div or other element to create the scratch panel in
-  foreground: &quot;fg.png&quot;,               // An image for the scratchable surface
-  background: &quot;bg.png&quot;                // An image to show behind - this is optional
-});
-</code></pre><h2 id="all-options">All options</h2>
-<h3 id="elementid-default-scratch-panel-">elementId (default: &quot;scratch-panel&quot;)</h3>
-<p>The HTML element ID you want to place the scratch panel in. The panel will fill this element (both width and height should be set on it).
-By default it will look for an element with id <strong>scratch-panel</strong> <code>&lt;div id=&quot;scratch-panel&quot;&gt;&lt;/div&gt;</code>.</p>
-<h3 id="threshold-default-65-">threshold (default: 65)</h3>
-<p>Percentage of the surface that should be scratched to trigger the callback and clear the rest of the panel.</p>
-<h3 id="callback-default-null-">callback (default: null)</h3>
-<p>A callback function that gets triggered once the threshold is reached</p>
-<h3 id="readycallback-default-null-">readyCallback (default: null)</h3>
-<p>A callback function that gets triggered once the scratch panel has been loaded, the foreground image has been loaded and drawn, and the background image has been applied.</p>
-<h3 id="foreground-default-">foreground (default: &quot;&quot;)</h3>
-<p>The url to an image to use as the scratch surface. </p>
-<h3 id="background-default-">background (default: &quot;&quot;)</h3>
-<p>The url to an image to show behind the scratch panel. This is applied as a CSS background to the container you specify with <strong>elementId</strong>.</p>
-<h3 id="crossorigin-default-">crossOrigin (default: &quot;&quot;)</h3>
-<p>Allowed values: <code>&quot;&quot;</code>, <code>&quot;anonymous&quot;</code>, <code>&quot;use-credentials&quot;</code></p>
-<p>If you specify an externally hosted foreground image you&#39;ll need to load this with CORS as it&#39;s drawn on an HTML Canvas element.</p>
-<p>For more info on CORS see <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image">https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image</a></p>
-<h3 id="scratchsize-default-40-">scratchSize (default: 40)</h3>
-<p>The diameter of the circle/brush used to scratch</p>
-<h3 id="enabled-default-true-">enabled (default: true)</h3>
-<p>Should the scratch panel be enabled by default?</p>
-<h3 id="backgroundloaddelay-default-300-">backgroundLoadDelay (default: 300)</h3>
-<p>The delay in milliseconds applied after loading the foreground image and before attaching the CSS background image. This is a precaution so the background isn&#39;t visible before foreground has been drawn. Because the foreground image has been downloaded before the background is added, this probably isn&#39;t required.</p>
-<h2 id="methods">Methods</h2>
-<h3 id="getpercentscratched-">getPercentScratched()</h3>
-<p>Returns the percent of the scratch panel that has been scratched.</p>
-<h3 id="clear-">clear()</h3>
-<p>Clears the foreground image (as if the whole panel had been scratched).</p>
-<h3 id="setoption-key-value-">setOption(key, value)</h3>
-<p>Set an option value. This will not have any (useful) effect on options used in the initialisation, such as foreground, background or elementId, but will change the value that&#39;s returned by <strong>getOption()</strong></p>
-<p>It can be used to change the following options:</p>
-<ul>
-<li>threshold</li>
-<li>scratchSize</li>
-<li>enabled</li>
-</ul>
-<h3 id="getoption-key-">getOption(key)</h3>
-<p>Returns an option value.</p>
-<pre><code>var sp = ScratchPanel({
-  elementId: &quot;scratch-container&quot;, 
-  foreground: &quot;fg.png&quot;,              
-  background: &quot;bg.png&quot;,
-  enabled: false          // disabled by default
-});
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0;url=https://github.com/willj/Scratch-Panel/blob/master/README.md" />
+    <title>Scratch Panel</title>
+</head>
+<body>
+    <h1>Scratch Panel</h1>
 
-sp.setOption(&quot;enabled&quot;, true);  // enabled at a later time
-var p = sp.getPercentScratched();
-sp.clear();
-sp.getOption(&quot;elementId&quot;);
-</code></pre>
+    <p>Read the docs here: <a href="https://github.com/willj/Scratch-Panel/blob/master/README.md">https://github.com/willj/Scratch-Panel/blob/master/README.md</a></p>
+    <p>View the sample here: <a href="http://www.madebywill.net/Scratch-Panel/sample/">http://www.madebywill.net/Scratch-Panel/sample/</a></p>
+
+</body>
+</html>
