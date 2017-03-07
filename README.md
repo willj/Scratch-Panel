@@ -1,7 +1,7 @@
 # Scratch-Panel
 A canvas based scratch panel/scratch card.
 
-Sample: http://www.madebywill.net/Scratch-Panel/sample/
+Sample: https://willj.github.io/Scratch-Panel/sample/
 
 ## Minimal Usage
 
