@@ -62,7 +62,7 @@ function ScratchPanel(options){
 
             if (options.background) {
                 setTimeout(function(){
-                    container.style.background = "url('" + options.background + "')";
+                    container.style.backgroundImage = "url('" + options.background + "')";
                     canvasReady();
                 }, options.backgroundLoadDelay);
             } else {
