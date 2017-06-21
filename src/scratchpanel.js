@@ -13,7 +13,8 @@ function ScratchPanel(options){
         crossOrigin: "",    // "anonymous" / "use-credentials"
         scratchSize: 40,
         enabled: true,
-        backgroundLoadDelay: 300
+        backgroundLoadDelay: 300,
+        autoResize: true
     };
 
     init();
@@ -37,19 +38,23 @@ function ScratchPanel(options){
         canvas = document.createElement("canvas");
         ctx = canvas.getContext("2d");
 
+        setCanvasSize();
+
+        container.appendChild(canvas);
+    }
+
+    function setCanvasSize() {
         options.width = container.clientWidth;
         options.height = container.clientHeight;
 
         canvas.width = options.width;
         canvas.height = options.height;
-
-        container.appendChild(canvas);
     }
 
     function loadImages(){
         if (!options.foreground) return console.error("A foreground image must be specified");
         
-        var img = document.createElement("img");
+        img = document.createElement("img");
 
         if (options.crossOrigin != ""){
             img.crossOrigin = options.crossOrigin;
@@ -58,7 +63,7 @@ function ScratchPanel(options){
         img.src = options.foreground;
 
         img.onload = function(){
-            ctx.drawImage(img, 0, 0, options.width, options.height);
+            drawScratchFront();
 
             if (options.background) {
                 setTimeout(function(){
@@ -71,6 +76,10 @@ function ScratchPanel(options){
         }
     }
 
+    function drawScratchFront() {
+        ctx.drawImage(img, 0, 0, options.width, options.height);
+    }
+
     function canvasReady(){
         ready = true;
         if (options.readyCallback) {
@@ -78,7 +87,9 @@ function ScratchPanel(options){
         } 
     }
 
-    function addEventListeners(){
+    function addEventListeners() {
+        window.addEventListener("resize", resizeWindow);
+
         canvas.addEventListener("mousedown", down);
         canvas.addEventListener("mousemove", move);
         canvas.addEventListener("mouseup", up);
@@ -91,6 +102,8 @@ function ScratchPanel(options){
     function setupEndEvent(){
         endEvent = once(function(){
             clear();
+            window.removeEventListener("resize", resizeWindow);
+            container.removeChild(canvas);
             if (options.callback){
                 options.callback.apply(null);
             }
@@ -211,6 +224,13 @@ function ScratchPanel(options){
 
     function getOption(key){
         return options[key];
+    }
+
+    function resizeWindow(e) {
+        if (options.autoResize) {
+            setCanvasSize();
+            drawScratchFront();
+        }
     }
 
     return {
